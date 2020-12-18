@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Subclass to Car and an implementation of interface Loader
  */
-public class Scania extends Car implements Loader {
+public class Scania extends Car implements Loader, TruckBedInterface {
     /**
      * The angle of the truck bed
      */

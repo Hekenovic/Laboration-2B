@@ -15,7 +15,7 @@ public class CarController extends JPanel{
 
     private final JPanel gasPanel = new JPanel();
     private JSpinner gasSpinner = new JSpinner();
-    private int gasAmount = 1;
+    private int gasAmount = 0;
     private final JLabel gasLabel = new JLabel("Amount of gas");
     private final JButton gasButton = new JButton("Gas");
     private final JButton brakeButton = new JButton("Brake");

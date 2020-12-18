@@ -1,5 +1,7 @@
 package Cars;
 
+import sun.font.TrueTypeFont;
+
 import java.awt.*;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
@@ -85,6 +87,14 @@ public abstract class Car implements Movable {
      * Method to start the engine.
      */
     public void startEngine(){ currentSpeed = 0.1; }
+
+    public boolean isEngineOn() {
+        if (this.getCurrentSpeed() != 0)
+            return true;
+        else
+            return false;
+
+    }
 
     /**
      * Method to stop the engine.

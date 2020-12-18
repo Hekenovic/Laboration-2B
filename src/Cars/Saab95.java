@@ -5,7 +5,7 @@ import java.awt.*;
 /**
  * Subclass of abstract class Car.
  */
-public class Saab95 extends Car {
+public class Saab95 extends Car implements TurboInterface{
     /**
      * Instance variable.
      */

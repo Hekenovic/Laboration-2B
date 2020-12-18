@@ -1,14 +1,11 @@
 package CarMVC;
 
-import Cars.Car;
-import Cars.Saab95;
-import Cars.Scania;
-
+import Cars.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CarModel implements ControlInterface, ViewInterface {
+public class CarModel implements ControlInterface, ViewInterface, TruckBedInterface {
 
 
     private List<Car> cars;
@@ -68,7 +65,8 @@ public class CarModel implements ControlInterface, ViewInterface {
     public void gas(int amount) {
         double gas = ((double) amount) / 100;
         for (Car car : cars) {
-            car.gas(gas);
+            if (car.isEngineOn() && amount > 0)
+                car.gas(gas);
         }
     }
 
@@ -80,15 +78,15 @@ public class CarModel implements ControlInterface, ViewInterface {
 
     public void setTurboOn(){
         for (Car car : cars) {
-            if (car instanceof Saab95)
-                ((Saab95) car).setTurboOn();
+            if (car instanceof TurboInterface)
+                ((TurboInterface) car).setTurboOn();
         }
     }
 
     public void setTurboOff(){
         for (Car car : cars) {
-            if (car instanceof Saab95)
-                ((Saab95) car).setTurboOff();
+            if (car instanceof TurboInterface)
+                ((TurboInterface) car).setTurboOff();
         }
     }
 
@@ -101,8 +99,8 @@ public class CarModel implements ControlInterface, ViewInterface {
 
     public void tiltDown(){
         for (Car car : cars){
-            if (car instanceof Scania)
-                ((Scania) car).tiltDown();
+            if (car instanceof TruckBedInterface)
+                ((TruckBedInterface) car).tiltDown();
         }
     }
 
