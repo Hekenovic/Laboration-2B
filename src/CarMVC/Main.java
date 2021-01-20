@@ -12,11 +12,7 @@ public class Main {
         int X = 800;
         int Y = 800;
 
-        JFrame frame = new JFrame();
-
-        frame.setTitle("CarSim 2.0");
-        frame.setPreferredSize(new Dimension(X,Y));
-        frame.setLayout(new FlowLayout(FlowLayout.LEFT, 0, 0));
+        SimFrame frame = new SimFrame(X, Y);
 
         CarModel model = new CarModel(new Dimension(X, Y-240));
         CarViewer viewer = new CarViewer(model, new Dimension(X, Y-240));
@@ -27,17 +23,17 @@ public class Main {
 
         frame.add(viewer);
 
-        CarController buttons = new CarController(model, X);
+        CarButtonView buttonView = new CarButtonView(X);
+        CarController buttons = new CarController(buttonView, model, X);
 
-        frame.add(buttons);
+        frame.add(buttonView);
 
         TimeController timer = new TimeController(model);
 
-        AddOrRemoveCarButton addOrRemoveCarButton = new AddOrRemoveCarButton(model, X);
-        frame.add(addOrRemoveCarButton);
+        AddOrRemoveButtonView addOrRemoveButtonView = new AddOrRemoveButtonView(X);
 
-        model.addCar(new Saab95());
-        model.addCar(new Volvo240());
+        AddOrRemoveCarButton addOrRemoveCarButton = new AddOrRemoveCarButton(addOrRemoveButtonView, model, X);
+        frame.add(addOrRemoveButtonView);
 
         // Make the frame pack all it's components by respecting the sizes if possible.
         frame.pack();

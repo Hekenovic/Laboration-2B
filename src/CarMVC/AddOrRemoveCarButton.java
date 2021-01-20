@@ -9,53 +9,39 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddOrRemoveCarButton extends JPanel {
+public class AddOrRemoveCarButton {
 
     private final ControlInterface model;
 
-
-    private final JButton addSaabButton = new JButton("Add New Saab");
-    private final JButton addVolvoButton = new JButton("Add New Volvo");
-    private final JButton addScaniaButton = new JButton("Add New Scania");
-    private final JButton RemoveCarButton = new JButton("Remove Car");
-
-    public AddOrRemoveCarButton(ControlInterface model, int X) {
+    public AddOrRemoveCarButton(AddOrRemoveButtonView view, ControlInterface model, int X) {
         this.model = model;
-        initializeButtons(X);
+        initializeButtons(view, X);
     }
 
-    private void initializeButtons(int X) {
+    private void initializeButtons(AddOrRemoveButtonView view, int X) {
 
-        addSaabButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        this.add(addSaabButton);
-        addSaabButton.addActionListener(new ActionListener() {
+        view.addListenerToSaabButton(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.addCar(new Saab95());
             }
         });
 
-        addVolvoButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        this.add(addVolvoButton);
-        addVolvoButton.addActionListener(new ActionListener() {
+        view.addListenerToVolvoButton(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.addCar(new Volvo240());
             }
         });
 
-        addScaniaButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        this.add(addScaniaButton);
-        addScaniaButton.addActionListener(new ActionListener() {
+        view.addListenerToScaniaButton(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.addCar(new Scania());
             }
         });
 
-        RemoveCarButton.setPreferredSize(new Dimension(X / 5 - 15, 200));
-        this.add(RemoveCarButton);
-        RemoveCarButton.addActionListener(new ActionListener() {
+        view.addListenerToRemoveButton(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 model.removeCar();

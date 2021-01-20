@@ -7,7 +7,6 @@ import java.util.List;
 
 public class CarModel implements ControlInterface, ViewInterface, TruckBedInterface {
 
-
     private List<Car> cars;
     private List<UpdateListener> updateListeners = new ArrayList<>();
     private Dimension modelDimension;
